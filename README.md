@@ -1,4 +1,4 @@
-# ChEC In Vitro Analysis Pipeline
+# ChEC In Vitro Analysis Pipeline for Hybrid Genome
 
 This project provides a streamlined method for analyzing ChEC (Chromatin Endogenous Cleavage) data. It processes the output files generated after demultiplexing and produces normalized, structured data for further analysis. The pipeline is specifically adapted for in vitro studies of transcription factor (TF) binding sites in *Saccharomyces cerevisiae* and *Saccharomyces paradoxus* genomes.
 
