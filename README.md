@@ -1,6 +1,13 @@
 # ChEC In Vitro Analysis Pipeline for Hybrid Genome
 
-This project provides a streamlined method for analyzing ChEC (Chromatin Endogenous Cleavage) data. It processes the output files generated after demultiplexing and produces normalized, structured data for further analysis. The pipeline is specifically adapted for in vitro studies of transcription factor (TF) binding sites in *Saccharomyces cerevisiae* and *Saccharomyces paradoxus* genomes.
+This project provides a streamlined method for analyzing ChEC (Chromatin Endogenous Cleavage) data. It processes the output files generated after demultiplexing and produces normalized, structured data for further analysis. The pipeline is specifically adapted for *in vitro* studies of transcription factor (TF) binding sites in *Saccharomyces cerevisiae* and *Saccharomyces paradoxus* genomes.
+
+ChEC is a powerful method for mapping protein-DNA interactions *in vivo*, and at the Barkai lab, we have extensivelly studied transcription factor binding in *Saccharomyces cerevisiae* using this method. Now, we want test TF binding in *in vitro*, to truly isolate TF effects from the cellular environment. We have adapted this experimental protocol *in vitro*, and we need a pipeline for the computational analysis of the sequencing data. 
+
+As we typically do many experiments in a high throughput fashion, and rarely change experimental methods, this pipeline will be highly benificial for me in my PhD, and for further students performing this experiment and analysis. This automates multiple steps into a single run line, therefore, we can let the analysis of many large samples run overnight, and come back the next morning to clearly organised files, ready for deeper analysis. 
+
+Our protocol involves isolating the TF from *Saccharomyces cerevisiae*, and letting it bind to *Saccharomyces paradoxus* genome. Unlike other pipelines, this analysis also allows analysis on carry-over DNA from the *Saccharomyces cerevisiae*, thus enabling us to understand protein binding strength to native DNA, and also quality check experimental conditions. As we perform high-throuput experiments, and now we have to analyse with two genomes, this has increased the load and the time required to do individual steps. Such a pipeline that can automate the basic repeatable processes, that must happen every time we do this experiment, can save a lot of time and effort.
+
 
 ---
 
