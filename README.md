@@ -34,7 +34,7 @@ This pipeline is especially useful for analyzing TF binding data across two geno
 - Each file contains two columns: `Cer` (counts for *S. cerevisiae*) and `Par` (counts for *S. paradoxus*).
 2. **Norm Profiles**: Saved in `NormProfilesRepeats/` as compressed `.gz` files.
 - The reads are normalised to the total reads obtained in this sample, thus ensuring that different samples can be compared. Each file contains two columns: `Cer` (counts for *S. cerevisiae*) and `Par` (counts for *S. paradoxus*).
-3. **Sum Prom**: Saved in `NormProfilesRepeats/` as compressed `.gz` files.
+3. **Sum Prom**: Saved in `SumPromRepeats/` as compressed `.gz` files.
 - As both species of yeast are very closely related, there is an equivalence of promoters. We sum over the normalised signal along the promoter lengths, and further normalise this according to promoter length. This is then stored as the signal over the promoter (SumProm) value. Each file contains two columns: `Cer` (counts for *S. cerevisiae*) and `Par` (counts for *S. paradoxus*).
 ---
 
