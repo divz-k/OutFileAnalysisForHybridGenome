@@ -20,8 +20,8 @@ This pipeline is especially useful for analyzing TF binding data across two geno
 ## Input and Output
 
 ### Input:
-1. **outFilesLoc.txt**: A text file with paths to various directories and files. Example format provided in the repository
-2. **Genome Information Files**:
+1. **outFilesLoc.txt**: A text file with paths to the required inputs, and location to save the outputs. Example format provided in the repository
+2. **Genome Information Files**: All provided in the repository
 - `cerChrLen.xlsx`: Chromosome lengths for *S. cerevisiae*.
 - `parChrLen.xlsx`: Chromosome lengths for *S. paradoxus*.
 - `cerProm.xlsx`: Promoter information for *S. cerevisiae*.
@@ -38,9 +38,8 @@ This pipeline is especially useful for analyzing TF binding data across two geno
 - As both species of yeast are very closely related, there is an equivalence of promoters. We sum over the normalised signal along the promoter lengths, and further normalise this according to promoter length. This is then stored as the signal over the promoter (SumProm) value. Each file contains two columns: `Cer` (counts for *S. cerevisiae*) and `Par` (counts for *S. paradoxus*).
 ---
 
-## Setup
 
-### Prerequisites:
+## Setup:
 1. **Python Environment**: Ensure you have Python 3.8+ installed.
 2. **Dependencies**:
 - `numpy`
@@ -52,4 +51,28 @@ Install them using:
 pip install numpy pandas openpyxl
 ```
 3. (Optional) Environment: Use the provided environment file: OutFileAnalysisEnv
+---
 
+
+## How to run:
+1. **Clone the repository**:
+```bash
+git clone https://github.com/divz-k/OutFileAnalysisForHybridGenome.git
+cd OutFileAnalysisForHybridGenome
+```
+### How to Run
+
+2. Set up directories and ensure all required input files are correctly placed. Fill in outFilesLoc.txt to the appropriate file paths.
+   - `outFilesLoc.txt`
+   - `genomeInfo/` containing:
+     - `cerChrLen.xlsx`
+     - `parChrLen.xlsx`
+     - `cerProm.xlsx`
+     - `parProm.xlsx`
+   - `outFiles/` containing:
+     - `.out` files
+     - `WellList.xlsx`
+
+3. Run the script:
+   ```bash
+   python3 outFilesPipeline.py
