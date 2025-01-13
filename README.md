@@ -60,8 +60,6 @@ pip install numpy pandas openpyxl
 git clone https://github.com/divz-k/OutFileAnalysisForHybridGenome.git
 cd OutFileAnalysisForHybridGenome
 ```
-### How to Run
-
 2. Set up directories and ensure all required input files are correctly placed. Fill in outFilesLoc.txt to the appropriate file paths.
    - `outFilesLoc.txt`
    - `genomeInfo/` containing:
@@ -76,3 +74,7 @@ cd OutFileAnalysisForHybridGenome
 3. Run the script:
    ```bash
    python3 outFilesPipeline.py
+
+## Acknowledgements
+Analysis used in the pipeline, such as RawProfiles refining, Normalisation, Promoter signal calculation was developed in the Barkai lab. 
+This project is done as a part of the Python Course at WIS by Gabor Sabor: [link to couse repository](https://github.com/szabgab/wis-python-course-2024-11)
