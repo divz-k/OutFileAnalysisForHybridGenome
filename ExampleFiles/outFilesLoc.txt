@@ -1,0 +1,3 @@
+outFilesLoc= /Users/divyakr/PythonCourseByGabor/project/ExampleFiles/outFiles/
+resultsFileLoc= /Users/divyakr/PythonCourseByGabor/project/ExampleFiles/
+genomeInfoLoc= /Users/divyakr/PythonCourseByGabor/project/ExampleFiles/genomeInfo
