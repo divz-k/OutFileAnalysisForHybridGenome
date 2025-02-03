@@ -1,5 +1,7 @@
 # Pipeline for processing *in vitro* ChEC seq data
 
+This manual provides step-by-step instructions for setting up and running the ChEC *In Vitro* Analysis Pipeline. The pipeline automates the processing of sequencing data to analyze transcription factor (TF) binding in a hybrid genome system.
+
 
 ### Scientific Background
 
@@ -18,7 +20,7 @@ This pipeline is also unique, as:
 
 ---
 
-## Problem Statement
+### Problem Statement
 
 In our high-throughput experimental setup, we generate large sequencing datasets that require extensive preprocessing. This includes:
 
@@ -29,23 +31,30 @@ In our high-throughput experimental setup, we generate large sequencing datasets
 
 Performing these tasks manually for multiple experiments is time-consuming and error-prone. Therefore, we require an automated computational pipeline to efficiently process and analyze the data.
 
-
-
 ---
-## What Does This Project Do?
+### What Does This Pipeline Do?
 
-The pipeline:
 1. Processes `.out` files (post-demultiplexing).
 2. Identifies and removes unwanted genomic regions (e.g., subtelomeric regions, mitochondrial DNA, and specific genes like CUP1).
 3. Normalizes read counts for each sample.
 4. Calculates the sum of signal on promoters (probably will add more features)
 5. Saves the processed data in well organised target folders as compressed files (`.gz`) for easy access.
 
-This pipeline is especially useful for analyzing TF binding data across two genomes (*S. cerevisiae* and *S. paradoxus*) in parallel, enabling insights into TF binding patterns and carryover DNA.
+This pipeline automates the processing of ChEC sequencing data, reducing the need for manual intervention and enabling overnight batch analysis. It ensures:
+1. Efficiency: Processes large datasets quickly.
+2. Reproducibility: Standardized data handling across multiple experiments.
+3. Scalability: Adapts to growing datasets and multiple experimental conditions.
 
 ---
 
-## Input and Output
+## Computationl workflow
+
+### Outline
+1. **Input Handling**: Reads required input files from outFilesLoc.txt, which specifies paths for input and output data.
+2. **Filtering**: Unwanted genomic regions (e.g., subtelomeric regions, mitochondrial DNA, CUP1 locus) are removed based on predefined lists.
+3. **Normalization**: Read counts are normalized to total sequencing depth per sample, allowing direct comparisons.
+4. **Promoter Summation**: Normalized signals are summed over promoter regions and further adjusted for promoter length.
+5. **File Organization**: Processed results are stored in structured folders for easy access and future analysis.
 
 ### Input:
 1. **outFilesLoc.txt**: A text file with paths to the required inputs, and location to save the outputs. Example format provided in the repository
@@ -67,22 +76,24 @@ This pipeline is especially useful for analyzing TF binding data across two geno
 ---
 
 
-## Setup:
+## Instruction Manual:
+
+### Setup
 1. **Python Environment**: Ensure you have Python 3.8+ installed.
 2. **Dependencies**:
 - `numpy`
 - `pandas`
 - `openpyxl`
-
+  
 Install them using:
 ```bash
 pip install numpy pandas openpyxl
 ```
 3. (Optional) Environment: Use the provided environment file: OutFileAnalysisEnv
----
 
 
-## How to run:
+### How to run:
+
 1. **Clone the repository**:
 ```bash
 git clone https://github.com/divz-k/OutFileAnalysisForHybridGenome.git
