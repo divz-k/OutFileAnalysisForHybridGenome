@@ -20,43 +20,42 @@ This pipeline is also unique, as:
 
 ---
 
-### Problem Statement
+## Understanding the pipeline
 
-In our high-throughput experimental setup, we generate large sequencing datasets that require extensive preprocessing. This includes:
+### What do we need from the pipeline?
 
-1. Filtering unwanted genomic regions (e.g., subtelomeric regions, mitochondrial DNA, and repetitive sequences).
-2. Normalizing read counts to account for sequencing depth differences.
-3. Summarizing TF binding signals at promoter regions for meaningful comparison across samples.
-4. Organizing results in structured output files for downstream statistical and visualization analyses.
-
+Post demultiplexing, we get `.out` files, that are named according to their barcodes. Each file is an array, as long as the genome it was aligned with, and at each position, it contains the total number of sequencing reads obtained. To meaningfully process this data, we must:
+1. Assign appropriate sample names, and replacing the barcode name 
+2. Filter unwanted genomic regions (e.g., subtelomeric regions, mitochondrial DNA, and repetitive sequences).
+3. Normalise read counts to account for sequencing depth differences.
+4. Summarise TF binding signals at promoter regions for meaningful comparison across samples.
+5. Organise results in structured output files for downstream statistical and visualization analyses.
 Performing these tasks manually for multiple experiments is time-consuming and error-prone. Therefore, we require an automated computational pipeline to efficiently process and analyze the data.
 
----
+
 ### What Does This Pipeline Do?
 
-1. Processes `.out` files (post-demultiplexing).
-2. Identifies and removes unwanted genomic regions (e.g., subtelomeric regions, mitochondrial DNA, and specific genes like CUP1).
-3. Normalizes read counts for each sample.
-4. Calculates the sum of signal on promoters (probably will add more features)
-5. Saves the processed data in well organised target folders as compressed files (`.gz`) for easy access.
+1. **Sample Organisation**:
+   Finds the `.out` files, and all the other required file locations from outFilesLoc.txt
+   Reads the naming file called "WellList.xlsx" that matches the barcodes to the sample names
+   Reads the `.out` files, names them appropritately and saves this in a usable yet compressed format (pickle.gz) , in an organised file.
+2. **Filtering and Normalisation**:
+   Removes unwanted genomic regions (e.g., subtelomeric regions, mitochondrial DNA, CUP1 locus) 
+   Normalises read counts to total sequencing depth per sample, allowing direct comparisons.
+3. **Promoter Signal Summation**:
+   Sums the normalized signals over defined promoter regions (provided in the repository) and further adjusts summed signal for promoter length.
 
 This pipeline automates the processing of ChEC sequencing data, reducing the need for manual intervention and enabling overnight batch analysis. It ensures:
-1. Efficiency: Processes large datasets by a single code
+1. Efficiency and Scalability: Processes large datasets by a single code
 2. Reproducibility: Standardized data handling across multiple experiments.
-3. Scalability: Adapts to growing datasets.
+3. File Organisation: We can keep adding new out Files and run the code, but all the resulting samples will be neatly organised into pre-defined folders.
+
 
 ---
 
-## Computationl workflow
+## What are the files in the repository?
 
-### Outline
-1. **Input Handling**: Reads required input files from outFilesLoc.txt, which specifies paths for input and output data.
-2. **Filtering**: Unwanted genomic regions (e.g., subtelomeric regions, mitochondrial DNA, CUP1 locus) are removed based on predefined lists.
-3. **Normalization**: Read counts are normalized to total sequencing depth per sample, allowing direct comparisons.
-4. **Promoter Summation**: Normalized signals are summed over promoter regions and further adjusted for promoter length.
-5. **File Organization**: Processed results are stored in structured folders for easy access and future analysis.
-
-### Input:
+### Input Files:
 1. **outFilesLoc.txt**: A text file with paths to the required inputs, and location to save the outputs. Example format provided in the repository
 2. **Genome Information Files**: All provided in the repository
 - `cerChrLen.xlsx`: Chromosome lengths for *S. cerevisiae*.
@@ -66,7 +65,7 @@ This pipeline automates the processing of ChEC sequencing data, reducing the nee
 3. **Raw `.out` Files**: Alignment results containing read counts across genome positions.
 4. **WellList.xlsx**: A mapping of well identifiers to sample names.
 
-### Output:
+### Output Files:
 1. **Raw Profiles**: Saved in `RawProfilesRepeats/` as compressed `.gz` files.
 - Each file contains two columns: `Cer` (counts for *S. cerevisiae*) and `Par` (counts for *S. paradoxus*).
 2. **Norm Profiles**: Saved in `NormProfilesRepeats/` as compressed `.gz` files.
@@ -109,10 +108,21 @@ cd OutFileAnalysisForHybridGenome
    - `outFiles/` containing:
      - `.out` files
      - `WellList.xlsx`
+    
+3. Ensure input files are correctly placed:
+   - Fill in outFilesLoc.txt to the appropriate file paths.
+   - Copy the `.out` files to the 'outFiles' folder
+   - Edit the WellList.xlsx to match the correct file names (barcode) to the sample names
 
-3. Run the script:
+4. Run the script:
    ```bash
    python3 outFilesPipeline.py
+
+---
+
+### Example/ Test Run 
+
+
 
 ## Acknowledgements
 Analysis used in the pipeline, such as RawProfiles refining, Normalisation, Promoter signal calculation was developed in the Barkai lab. 
