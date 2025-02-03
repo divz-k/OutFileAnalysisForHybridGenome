@@ -36,14 +36,14 @@ Performing these tasks manually for multiple experiments is time-consuming and e
 ### What Does This Pipeline Do?
 
 1. **Sample Organisation**:
-   Finds the `.out` files, and all the other required file locations from outFilesLoc.txt
-   Reads the naming file called "WellList.xlsx" that matches the barcodes to the sample names
-   Reads the `.out` files, names them appropritately and saves this in a usable yet compressed format (pickle.gz) , in an organised file.
+    - Finds the `.out` files, and all the other required file locations from outFilesLoc.txt
+    - Reads the naming file called "WellList.xlsx" that matches the barcodes to the sample names
+    - Reads the `.out` files, names them appropritately and saves this in a usable yet compressed format (pickle.gz) , in an organised file.
 2. **Filtering and Normalisation**:
-   Removes unwanted genomic regions (e.g., subtelomeric regions, mitochondrial DNA, CUP1 locus) 
-   Normalises read counts to total sequencing depth per sample, allowing direct comparisons.
+    - Removes unwanted genomic regions (e.g., subtelomeric regions, mitochondrial DNA, CUP1 locus) 
+    - Normalises read counts to total sequencing depth per sample, allowing direct comparisons.
 3. **Promoter Signal Summation**:
-   Sums the normalized signals over defined promoter regions (provided in the repository) and further adjusts summed signal for promoter length.
+    - Sums the normalized signals over defined promoter regions (provided in the repository) and further adjusts summed signal for promoter length.
 
 This pipeline automates the processing of ChEC sequencing data, reducing the need for manual intervention and enabling overnight batch analysis. It ensures:
 1. Efficiency and Scalability: Processes large datasets by a single code
@@ -56,14 +56,14 @@ This pipeline automates the processing of ChEC sequencing data, reducing the nee
 ## What are the files in the repository?
 
 ### Input Files:
-1. **outFilesLoc.txt**: A text file with paths to the required inputs, and location to save the outputs. Example format provided in the repository
+1. `outFilesLoc.txt`: A text file with paths to the required inputs, and location to save the outputs. Example format provided in the repository
 2. **Genome Information Files**: All provided in the repository
 - `cerChrLen.xlsx`: Chromosome lengths for *S. cerevisiae*.
 - `parChrLen.xlsx`: Chromosome lengths for *S. paradoxus*.
 - `cerProm.xlsx`: Promoter information for *S. cerevisiae*.
 - `parProm.xlsx`: Promoter information for *S. paradoxus*.
 3. **Raw `.out` Files**: Alignment results containing read counts across genome positions.
-4. **WellList.xlsx**: A mapping of well identifiers to sample names.
+4. `WellList.xlsx`: A mapping of well identifiers to sample names.
 
 ### Output Files:
 1. **Raw Profiles**: Saved in `RawProfilesRepeats/` as compressed `.gz` files.
@@ -98,7 +98,7 @@ pip install numpy pandas openpyxl
 git clone https://github.com/divz-k/OutFileAnalysisForHybridGenome.git
 cd OutFileAnalysisForHybridGenome
 ```
-2. Set up directories and ensure all required input files are correctly placed. Fill in outFilesLoc.txt to the appropriate file paths.
+2. Set up directories.
    - `outFilesLoc.txt`
    - `genomeInfo/` containing:
      - `cerChrLen.xlsx`
