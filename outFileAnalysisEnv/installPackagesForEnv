@@ -1,0 +1,5 @@
+python3 -m venv outFileAnalysisEnv
+source outFileAnalysisEnv/bin/activate  # Activate it
+pip3 install numpy        
+pip3 install pandas
+pip3 install openpyxl
