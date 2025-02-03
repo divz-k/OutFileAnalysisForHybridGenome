@@ -1,16 +1,37 @@
-# ChEC In Vitro Analysis Pipeline for Hybrid Genome
+# Pipeline for processing *in vitro* ChEC seq data
 
-This project provides a streamlined method for analyzing ChEC (Chromatin Endogenous Cleavage) data. It processes the output files generated after demultiplexing and produces normalized, structured data for further analysis. The pipeline is specifically adapted for *in vitro* studies of transcription factor (TF) binding sites in *Saccharomyces cerevisiae* and *Saccharomyces paradoxus* genomes.
 
-ChEC is a powerful method for mapping protein-DNA interactions *in vivo*, and at the Barkai lab, we have extensivelly studied transcription factor binding in *Saccharomyces cerevisiae* using this method. Now, we want test TF binding in *in vitro*, to truly isolate TF effects from the cellular environment. We have adapted this experimental protocol *in vitro*, and we need a pipeline for the computational analysis of the sequencing data. 
+### Scientific Background
 
+ChEC (Chromatin Endogenous Cleavage) sequencing is a powerful method for mapping protein-DNA interactions *in vivo*. Our protein of interest is tagged with an MNase (Micrococcal nuclease), which is a nuclease that can cut the DNA in the presence of calcium. At the required conditions, we add calcium to the system, thus enabling the MNase to cut around the protein binding sites, thus producing short DNA fragments. These fragments are then sequenced to determine the binding sites.
+ChEC seq has high reproducibility and base specific resolution. 
+At the Barkai lab, we want to test TF (transcription factor) binding in *in vitro*, to truly isolate TF effects from its cellular environment. We have adapted this experimental ChEC seq protocol *in vitro*. Our protocol involves isolating the TF from *Saccharomyces cerevisiae*, and testing the binding to *Saccharomyces paradoxus* genome in a cell free system. 
+
+
+### Why is this pipeline useful?
+This pipeline provides a streamlined method for analyzing *in vitro* ChEC (Chromatin Endogenous Cleavage) data. It processes the output files generated after demultiplexing and produces normalized, structured data for further analysis. 
 As we typically do many experiments in a high throughput fashion, and rarely change experimental methods, this pipeline will be highly benificial for me in my PhD, and for further students performing this experiment and analysis. This automates multiple steps into a single run line, therefore, we can let the analysis of many large samples run overnight, and come back the next morning to clearly organised files, ready for deeper analysis. 
-
-Our protocol involves isolating the TF from *Saccharomyces cerevisiae*, and letting it bind to *Saccharomyces paradoxus* genome. Unlike other pipelines, this analysis also allows analysis on carry-over DNA from the *Saccharomyces cerevisiae*, thus enabling us to understand protein binding strength to native DNA, and also quality check experimental conditions. As we perform high-throuput experiments, and now we have to analyse with two genomes, this has increased the load and the time required to do individual steps. Such a pipeline that can automate the basic repeatable processes, that must happen every time we do this experiment, can save a lot of time and effort.
+This pipeline is also unique, as:
+1. Unlike other pipelines, this analysis also allows analysis on carry-over DNA from the *Saccharomyces cerevisiae*, thus enabling us to understand protein binding strength to native DNA, and also quality check experimental conditions.
+2. We perform high-throuput experiments, and now we have to analyse with two genomes, this has increased the load and the time required to do individual steps. Such a pipeline that can automate the basic repeatable processes, that must happen every time we do this experiment, can save a lot of time and effort.
 
 
 ---
 
+## Problem Statement
+
+In our high-throughput experimental setup, we generate large sequencing datasets that require extensive preprocessing. This includes:
+
+1. Filtering unwanted genomic regions (e.g., subtelomeric regions, mitochondrial DNA, and repetitive sequences).
+2. Normalizing read counts to account for sequencing depth differences.
+3. Summarizing TF binding signals at promoter regions for meaningful comparison across samples.
+4. Organizing results in structured output files for downstream statistical and visualization analyses.
+
+Performing these tasks manually for multiple experiments is time-consuming and error-prone. Therefore, we require an automated computational pipeline to efficiently process and analyze the data.
+
+
+
+---
 ## What Does This Project Do?
 
 The pipeline:
