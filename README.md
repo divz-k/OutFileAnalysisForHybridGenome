@@ -41,9 +41,9 @@ Performing these tasks manually for multiple experiments is time-consuming and e
 5. Saves the processed data in well organised target folders as compressed files (`.gz`) for easy access.
 
 This pipeline automates the processing of ChEC sequencing data, reducing the need for manual intervention and enabling overnight batch analysis. It ensures:
-1. Efficiency: Processes large datasets quickly.
+1. Efficiency: Processes large datasets by a single code
 2. Reproducibility: Standardized data handling across multiple experiments.
-3. Scalability: Adapts to growing datasets and multiple experimental conditions.
+3. Scalability: Adapts to growing datasets.
 
 ---
 
