@@ -123,12 +123,15 @@ cd OutFileAnalysisForHybridGenome
 ## Example/ Test Run 
 
 With this repository, I have provided example files that can help you test the working of this pipeline. 
--- Setup the directories as described above (just clone the repository, you should have everything in it)
--- From the ExampleFiles folder, copy the outFiles folder. This contains the corresponding WellList.xlsx file too.
--- From the ExampleFiles folder, copy the outFilesLoc.txt. In this text document, edit the folder paths. This will change according to your home directory, and where you cloned this repository.
--- Run the script on bash/zsh
--- Go the ExampleFiles folder, where there is a script called exampleCheck.py. Write down the appropriate SumPromRepeats file paths (to the one you created new, and the ones I have attached in the ExampleFiles folder). 
--- Run this exampleCheck.py script. As the SumPromRepeats are created at the end of the analysis, if this is identical, it means the RawProfileRepeats and NormProfileRepeats are also identical. 
+  -Setup the directories as described above (just clone the repository, you should have everything in it)
+  - From the ExampleFiles folder, copy the outFiles folder. This contains the corresponding WellList.xlsx file too.
+  - From the ExampleFiles folder, copy the outFilesLoc.txt. In this text document, edit the folder paths. This will change according to your home directory, and where 
+    you cloned this repository.
+  - Run the script on bash/zsh
+  - Go the ExampleFiles folder, where there is a script called exampleCheck.py. Write down the appropriate SumPromRepeats file paths (to the one you created new, and 
+    the ones I have attached in the ExampleFiles folder). 
+  - Run this exampleCheck.py script. As the SumPromRepeats are created at the end of the analysis, if this is identical, it means the RawProfileRepeats and 
+    NormProfileRepeats are also identical. 
 
 
 
